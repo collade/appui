@@ -13,8 +13,9 @@ $gray: #ccc;
 $lightGray: #ededed;
 $white: white;
 $orange: #fbaf3f;
-$darkOrange: #e35d28;
-$darkerOrange: #c65223;
+$darkOrange: #c48931;
+$red: #e35d28;
+$darkRed: #c65223;
 $lightGreen: #e1e084;
 $green: #cdcc33;
 $darkGreen: #a2a135;
@@ -35,19 +36,7 @@ a { text-decoration: none; color: $darkOrange;
 .clear { clear: both;}
 .loading-indicator { position: fixed; top: 40%; left: 47%; z-index: 100;}
 
-h1, h2, h3 { font-family: $fontSemiBold; color: $darkOrange;}
-h1 {
-  @include media($tablet) { font-size: 30px; }
-  @include media($mobile) { font-size: 28px; }
-}
-h2 {
-  @include media($tablet) { font-size: 26px; }
-  @include media($mobile) { font-size: 24px; }
-}
-h3 {
-  @include media($tablet) { font-size: 22px; }
-  @include media($mobile) { font-size: 20px; }
-}
+h1, h2, h3 { font-family: $fontSemiBold; font-weight: normal;}
 
 .table { display: table;
   .row { display: table-row;
@@ -68,7 +57,7 @@ h3 {
   }
   .search { float: right; margin-right: 10px;
     @include media($mobile) { float: left; }
-    input { height: 28px; width: 300px; background: url('../img/search-icon.png') 98% 50% no-repeat; padding: 5px 30px 5px 10px; border-radius: 3px;
+    input { height: 28px; width: 300px; background: $white url('../img/search-icon.png') 98% 50% no-repeat; padding: 5px 30px 5px 10px; border-radius: 3px;
       @include media($tablet) { width: 180px; }
     }
   }
@@ -79,7 +68,7 @@ h3 {
 
 #container { height: 100%; padding: 60px 0 0 180px;}
 
-#left-sidebar { width: 160px; height: 100%; position: fixed; left: 0; top: 0; background: $dark2; @include linear-gradient($dark2, $dark3); z-index: 8; padding: 80px 10px 10px 20px;
+#left-sidebar { width: 160px; height: 100%; position: fixed; left: 0; top: 0; background: $dark2; @include linear-gradient($dark2, $dark3); z-index: 8; padding: 80px 10px 10px 20px; box-shadow: inset -3px 63px 5px $dark;
   a { color: $white; text-decoration: none; }
   .action { width: 110px; height: 40px; background: url('../img/stream-bg.png') top left no-repeat; position: relative; padding: 12px 0 0 20px; margin-bottom: 20px;
     a { font-family: $fontSemiBold; }
@@ -99,7 +88,32 @@ h3 {
 
 #main {
   section.content { @include span-columns(9);
-    .box { @include span-columns(3 of 9);}
+    .box { @include span-columns(3 of 9); margin-top: 20px; margin-bottom: 20px; min-height: 100px; border-radius: 5px 5px 0 0; background: $white;
+      h2 { font-size: 22px; color: $white; margin: 0;}
+      h3 { font-size: 16px; color: $dark; font-family: $fontRegular; margin: 0;}
+
+      .header { position: relative; padding: 0 10px;
+        a { position: absolute; top: 2px; right: 3px; width: 30px; padding: 6px 0 0 10px; height: 30px;}
+      }
+
+      &.todo { border: 1px solid $red;
+        .header { background: $red; @include linear-gradient($red, $darkRed, #af481f);}
+      }
+      &.doing { border: 1px solid $orange;
+        .header { background: $orange; @include linear-gradient($orange, $darkOrange, #c08630);}
+      }
+      &.done { border: 1px solid $green; @include omega();
+        .header { background: $green; @include linear-gradient($green, $darkGreen, #9d9d26);}
+      }
+
+      .items { padding: 10px 10px 0 10px; margin-top: 10px;
+        .item { padding: 8px; position: relative; border: 1px solid $dark; border-radius: 3px; margin-bottom: 10px; background: $lightGray;
+          h3 { background: url('../img/item-bg.png') top left no-repeat; padding-left: 15px; padding-right: 35px; line-height: 15px; }
+          .time { color: $orange; font-family: $fontLight; margin-top: 5px; font-style: italic; }
+          .avatar { position: absolute; top: 10px; right: 7px; padding: 2px; background: $white; box-shadow: 0 1px 2px $dark;}
+        }
+      }
+    }
   }
 
   section.sidebar { @include span-columns(5);}
