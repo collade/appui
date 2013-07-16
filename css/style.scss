@@ -7,6 +7,8 @@ $pageWidth: 950px;
 $pageWidthTablet: 750px;
 $pageWidthMobile: 300px;
 $dark: #999999;
+$dark2: #bdbdbd;
+$dark3: #aeaeae;
 $gray: #ccc;
 $lightGray: #ededed;
 $white: white;
@@ -55,24 +57,50 @@ h3 {
 
 #wrapper { width: 100%; height: 100%; }
 
-#header { height: 60px; position: fixed; top: 0; width: 100%; padding: 10px; border-bottom: 1px solid $gray; @include linear-gradient($white, $lightGray);
+#header { height: 60px; position: fixed; top: 0; width: 100%; padding: 10px; border-bottom: 1px solid $gray; @include linear-gradient($white, $lightGray); z-index: 10;
   @include media($mobile) { height: 110px; }
   .logo { float: left; margin: 5px 20px 0 0;
     @include media($mobile) { float: none; text-align: center; margin-bottom: 10px; }
   }
   .tagline { float: left; padding-top: 10px; font-size: 16px;
-    @include media($tablet) { padding-top: 0; width: 250px; }
+    @include media($tablet) { padding-top: 0; width: 220px; }
     @include media($mobile) { display: none; }
   }
   .search { float: right; margin-right: 10px;
     @include media($mobile) { float: left; }
-    input { height: 30px; width: 300px; background: url('../img/search-icon.png') 98% 50% no-repeat; padding: 5px 30px 5px 10px; border-radius: 3px;
-      @include media($tablet) { width: 200px; }
-      @include media($mobile) { width: 180px; }
+    input { height: 28px; width: 300px; background: url('../img/search-icon.png') 98% 50% no-repeat; padding: 5px 30px 5px 10px; border-radius: 3px;
+      @include media($tablet) { width: 180px; }
     }
   }
   .avatar { float: right; background: $green url('../img/arrow-down.png') 92% 50% no-repeat; height: 40px; width: 60px; padding: 2px;
     img { max-height: 100%;}
   }
 }
-#container { height: 100%; }
+
+#container { height: 100%; padding: 60px 0 0 180px;}
+
+#left-sidebar { width: 160px; height: 100%; position: fixed; left: 0; top: 0; background: $dark2; @include linear-gradient($dark2, $dark3); z-index: 8; padding: 80px 10px 10px 20px;
+  a { color: $white; text-decoration: none; }
+  .action { width: 110px; height: 40px; background: url('../img/stream-bg.png') top left no-repeat; position: relative; padding: 12px 0 0 20px; margin-bottom: 20px;
+    a { font-family: $fontSemiBold; }
+    img { position: absolute; top: 5px; right: 0;}
+  }
+
+  .tags {
+    ul { list-style: none; margin: 0; padding: 0;
+      li { padding: 5px 10px 5px 40px; margin-bottom: 7px;
+        &.doing { background: url('../img/doing.png') center left no-repeat;}
+        &.todo { background: url('../img/todo.png') center left no-repeat;}
+        &.done { background: url('../img/done.png') center left no-repeat;}
+      }
+    }
+  }
+}
+
+#main {
+  section.content { @include span-columns(9);
+    .box { @include span-columns(3 of 9);}
+  }
+
+  section.sidebar { @include span-columns(5);}
+}
