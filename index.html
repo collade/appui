@@ -24,6 +24,9 @@
 
     <!--<div id="loading-indicator" class="loading-indicator"><img src="img/loading.gif" alt="Loading"/></div>-->
 
+    <div id="toggle-left" ng-click="toggleLeft()" ng-class="{on: data.showLeft}"></div>
+    <div id="toggle-right" ng-click="toggleRight()" ng-class="{on: data.showRight}"></div>
+
     <div id="wrapper">
 
         <header id="header">
@@ -43,7 +46,7 @@
 
         <section id="container">
 
-            <section id="left-sidebar">
+            <section id="left-sidebar" ng-class="{on: data.showLeft}">
                 <div class="action">
                     <a href="#">
                         Stream
@@ -163,7 +166,7 @@
                     </div>
 
                 </section>
-                <section class="sidebar">
+                <section class="sidebar" ng-class="{on: data.showRight}">
                     <tabset>
 
                         <tab heading="Categories">

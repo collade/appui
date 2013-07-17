@@ -46,6 +46,19 @@ h1, h2, h3 { font-family: $fontSemiBold; font-weight: normal;}
 }
 
 #wrapper { width: 100%; height: 100%; }
+#toggle-left, #toggle-right { position: fixed; top: 60px; width: 10px; height: 46px; background: $dark; cursor: pointer; @include transition(all .2s); z-index: 8; display: none;
+  @include media($tablet) { display: block; }
+  @include media($mobile) { top: 110px; }
+}
+#toggle-left { border-radius: 0 0 5px 0; left: 0;
+  &.on { left: 160px;}
+}
+#toggle-right { border-radius: 0 0 0 5px; right: 0;
+  &.on { right: 449px;}
+  @include media($mobile) {
+    &.on { right: 279px;}
+  }
+}
 
 #header { height: 60px; position: fixed; top: 0; width: 100%; padding: 10px; border-bottom: 1px solid $gray; @include linear-gradient($white, $lightGray); z-index: 10;
   @include media($mobile) { height: 110px; }
@@ -67,9 +80,16 @@ h1, h2, h3 { font-family: $fontSemiBold; font-weight: normal;}
   }
 }
 
-#container { height: 100%; padding: 60px 0 0 180px;}
+#container { height: 100%; padding: 60px 0 0 180px;
+  @include media($tablet) { padding-left: 15px; padding-right: 15px; }
+  @include media($mobile) { padding-top: 110px; }
+}
 
-#left-sidebar { width: 160px; height: 100%; position: fixed; left: 0; top: 0; background: $dark2; @include linear-gradient($dark2, $dark3); z-index: 8; padding: 80px 10px 10px 20px; box-shadow: inset -3px 63px 5px $dark;
+#left-sidebar { width: 160px; height: 100%; position: fixed; left: 0; top: 0; background: $dark2; @include linear-gradient($dark2, $dark3); z-index: 8; padding: 80px 10px 10px 20px; box-shadow: inset -3px 63px 5px $dark; @include transition(all .2s);
+  @include media($tablet) { left: -160px;
+    &.on { left: 0;}
+  }
+  @include media($mobile) { padding-top: 130px; box-shadow: inset -3px 113px 5px $dark; }
   a { color: $white; }
   .action { width: 110px; height: 40px; background: url('../img/stream-bg.png') top left no-repeat; position: relative; padding: 12px 0 0 20px; margin-bottom: 20px;
     a { font-family: $fontSemiBold; }
@@ -92,7 +112,11 @@ h1, h2, h3 { font-family: $fontSemiBold; font-weight: normal;}
   h2 { font-size: 22px; color: $white; margin: 0;}
   h3 { font-size: 16px; color: $dark; font-family: $fontRegular; margin: 0;}
   section.content { @include span-columns(9);
+    @include media($tablet) { @include span-columns(9); @include omega(); }
+    @include media($mobile) { @include span-columns(3); @include omega(); }
     .box { @include span-columns(3 of 9); margin-top: 20px; margin-bottom: 20px; min-height: 100px; border-radius: 5px 5px 0 0; background: $white;
+      @include media($tablet) { @include span-columns(3 of 9); }
+      @include media($mobile) { @include span-columns(3 of 3); @include omega(); }
 
       .header { position: relative; padding: 0 10px;
         a { position: absolute; top: 2px; right: 3px; width: 30px; padding: 6px 0 0 10px; height: 30px;
@@ -115,7 +139,7 @@ h1, h2, h3 { font-family: $fontSemiBold; font-weight: normal;}
 
   section.items { padding: 10px 10px 0 10px; margin-top: 10px;
     .item { padding: 8px; position: relative; border: 1px solid $dark; border-radius: 3px; margin-bottom: 10px; background: $lightGray;
-      h3 { background: url('../img/item-bg.png') 0 0 no-repeat; padding-left: 15px; padding-right: 35px; line-height: 15px; }
+      h3 { background: url('../img/item-bg.png') 0 3px no-repeat; padding-left: 15px; padding-right: 35px; line-height: 20px; }
       .time { color: $orange; font-family: $fontLight; margin-top: 5px; font-style: italic; }
       .avatar { position: absolute; top: 10px; right: 7px; padding: 2px; background: $white; box-shadow: 0 1px 2px $dark;}
 
@@ -128,7 +152,11 @@ h1, h2, h3 { font-family: $fontSemiBold; font-weight: normal;}
     }
   }
 
-  section.sidebar { @include span-columns(5); @include omega(); background: $white; border: 1px solid $gray; border-right: none; margin-bottom: 20px;
+  section.sidebar { @include span-columns(5); @include omega(); background: $white; border: 1px solid $gray; border-right: none; margin-bottom: 20px;  @include transition(all .2s);
+    @include media($tablet) { width: 450px; position: fixed; top: 0; right: 0; padding-top: 59px; z-index: 6; right: -450px; max-height: 100%; overflow: auto;
+      &.on { right: 0;}
+    }
+    @include media($mobile) { width: 280px; right: -280px;}
     .nav { background: $dark; @include linear-gradient($dark2, $dark3); color: $white; margin: 0; padding: 8px; box-shadow: inset 0 0 10px $dark; font-family: $fontLight;
       li { margin-right: 2px;
         &.active a, &:hover a { background: $dark; border-radius: 3px;}
@@ -148,7 +176,7 @@ h1, h2, h3 { font-family: $fontSemiBold; font-weight: normal;}
     .categories { list-style: none; margin: 0; padding: 10px;
       h3 { background: $orange; @include linear-gradient($orange, #c08630); color: $white; font-family: $fontSemiBold; padding: 5px 10px; margin: 10px 0; line-height: 20px; border-radius: 3px; cursor: pointer; margin: 5px 0;}
 
-      ul { list-style: none; padding: 0 20px; margin: 0;
+      ul { list-style: none; padding: 0 10px; margin: 0;
         h3 { background: $green; @include linear-gradient($green, #9d9d26);}
         li { position: relative;
           .count { position: absolute; top: 5px; right: 10px; color: $white; font-family: $fontSemiBold;}

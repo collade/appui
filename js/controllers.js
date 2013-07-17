@@ -3,7 +3,9 @@
 angular.module('Collade').
     controller('MainCtrl', ['$scope', function ($scope) {
         $scope.data = {
-            categories: [
+            "showLeft": false,
+            "showRight": false,
+            "categories": [
                 {
                     "name": "Collade",
                     "collapse": false,
@@ -89,5 +91,13 @@ angular.module('Collade').
 
                 }
             ]
-        }
+        };
+
+        $scope.toggleLeft = function () {
+            $scope.data.showLeft = !$scope.data.showLeft;
+        };
+
+        $scope.toggleRight = function () {
+            $scope.data.showRight = !$scope.data.showRight;
+        };
     }]);
