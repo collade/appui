@@ -455,8 +455,11 @@ h1, h2, h3 {
         margin: 5px 0; }
       #main section.sidebar .categories ul {
         list-style: none;
-        padding: 0 10px;
+        padding: 0 20px;
         margin: 0; }
+        @media screen and (max-width: 480px) {
+          #main section.sidebar .categories ul {
+            padding: 0 10px; } }
         #main section.sidebar .categories ul h3 {
           background: #cdcc33;
           background-color: #cdcc33;
