@@ -1,3 +1,6 @@
 'use strict';
 
-angular.module('Collade')
+angular.module('Collade').
+    controller('MainCtrl', ['$scope', function ($scope) {
+
+    }]);

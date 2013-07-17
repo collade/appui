@@ -20,7 +20,7 @@
     <script src="js/main.js"></script>
     <script src="js/controllers.js"></script>
 </head>
-<body>
+<body ng-controller="MainCtrl">
 
     <!--<div id="loading-indicator" class="loading-indicator"><img src="img/loading.gif" alt="Loading"/></div>-->
 
@@ -69,7 +69,7 @@
                             <a href="#"><img src="img/plus-icon.png" alt="Add"/></a>
                         </div>
 
-                        <div class="items">
+                        <section class="items">
 
                             <div class="item">
                                 <h3>Logo Design</h3>
@@ -107,7 +107,7 @@
                                 <div class="avatar"><img src="img/sample-todo-avatar.png" alt="Avatar"/></div>
                             </div>
 
-                        </div>
+                        </section>
                     </div>
 
                     <div class="box doing">
@@ -116,7 +116,7 @@
                             <a href="#"><img src="img/plus-icon.png" alt="Add"/></a>
                         </div>
 
-                        <div class="items">
+                        <section class="items">
 
                             <div class="item">
                                 <h3>Logo Design</h3>
@@ -130,7 +130,7 @@
                                 <div class="avatar"><img src="img/sample-todo-avatar.png" alt="Avatar"/></div>
                             </div>
 
-                        </div>
+                        </section>
                     </div>
 
                     <div class="box done">
@@ -139,7 +139,7 @@
                             <a href="#"><img src="img/plus-icon.png" alt="Add"/></a>
                         </div>
 
-                        <div class="items">
+                        <section class="items">
 
                             <div class="item">
                                 <h3>Logo Design</h3>
@@ -149,22 +149,70 @@
 
                             <div class="item">
                                 <h3>Login Page PSD to HTML</h3>
-                                <div class="time">15:15</div>
+                                <div class="time">2 hours</div>
                                 <div class="avatar"><img src="img/sample-todo-avatar.png" alt="Avatar"/></div>
                             </div>
 
                             <div class="item">
                                 <h3>Logo Design</h3>
-                                <div class="time">16:45</div>
+                                <div class="time">45 min</div>
                                 <div class="avatar"><img src="img/sample-todo-avatar.png" alt="Avatar"/></div>
                             </div>
 
-                        </div>
+                        </section>
                     </div>
 
                 </section>
                 <section class="sidebar">
-                    sb
+                    <tabset>
+
+                        <tab heading="Ideas">
+
+                            <div class="header">
+                                <div class="action">
+                                    <a href="#" class="add">#idea</a>
+                                </div>
+
+                                <div class="total">
+                                    <span class="number">23</span> ideas listed
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+
+                            <section class="items">
+
+                                <div class="item active">
+                                    <h3>We must update our website</h3>
+                                    <div class="time">Deadline Alter <span>20.06.2013</span></div>
+                                    <div class="avatar"><img src="img/sample-todo-avatar.png" alt="Avatar"/></div>
+                                </div>
+
+                                <div class="item">
+                                    <h3>Login Page PSD to HTML</h3>
+                                    <div class="time">17.06.2013</div>
+                                    <div class="avatar"><img src="img/sample-todo-avatar.png" alt="Avatar"/></div>
+                                </div>
+
+                                <div class="item">
+                                    <h3>Logo Design</h3>
+                                    <div class="time">12.06.2013</div>
+                                    <div class="avatar"><img src="img/sample-todo-avatar.png" alt="Avatar"/></div>
+                                </div>
+
+                            </section>
+
+                        </tab>
+
+                        <tab heading="Categories">
+                            Categories
+                        </tab>
+
+                        <tab heading="Reports">
+                            Reports
+                        </tab>
+
+                    </tabset>
                 </section>
             </section>
 
