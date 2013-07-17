@@ -166,6 +166,25 @@
                 <section class="sidebar">
                     <tabset>
 
+                        <tab heading="Categories">
+                            <ul class="categories">
+                                <li ng-repeat="cat in data.categories">
+                                    <h3 ng-click="cat.collapse = !cat.collapse">{{ cat.name }}</h3>
+
+                                    <ul collapse="cat.collapse">
+                                        <li ng-repeat="child in cat.children">
+                                            <h3 ng-click="child.collapse = !child.collapse">{{ child.name }}</h3>
+                                            <span class="count">{{ child.count }}</span>
+
+                                            <ul collapse="child.collapse">
+                                                <li ng-repeat="c in child.children">{{ c.name }}</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </tab>
+
                         <tab heading="Ideas">
 
                             <div class="header">
@@ -202,10 +221,6 @@
 
                             </section>
 
-                        </tab>
-
-                        <tab heading="Categories">
-                            Categories
                         </tab>
 
                         <tab heading="Reports">
